@@ -17,3 +17,12 @@ SELECT COUNT(atx_id), when_created
 FROM agent_transactions
 WHERE when_created LIKE '2018%'
 GROUP BY DATE_TRUNC('month', when_created);
+
+--Query 5
+SELECT COUNT(DISTINCT agent_id), SUM(amount),
+CASE WHEN SUM(amount)>0 THEN 'net depositors'
+     ELSE 'net withdrawers'
+     END
+FROM agent_transactions
+WHERE when_created > (CURRENT_TIMESTAMP  -  INTERVAL  '7 days') ;
+ 
