@@ -1,2 +1,8 @@
+-- Query 1
 SELECT COUNT(u_id)
 FROM users;
+
+-- Query 2
+SELECT COUNT(u_id)
+FROM transfers
+WHERE send_amount_currency = 'CFA';
