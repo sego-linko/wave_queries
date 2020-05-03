@@ -33,3 +33,11 @@ INNER JOIN agents
 ON agent_transactions.agent_id = agents.agent_id
 WHERE agent_transactions.when_created > (CURRENT_TIMESTAMP  -  INTERVAL  '7 days')
 GROUP BY agents.city;
+
+--Query 7
+SELECT SUM(agent_transactions.amount) AS "atx volume city summary" , agents.city, agents.country
+FROM agent_transactions
+INNER JOIN agents
+ON agent_transactions.agent_id = agents.agent_id
+WHERE agent_transactions.when_created > (CURRENT_TIMESTAMP  -  INTERVAL  '7 days')
+GROUP BY agents.city, agents.country;
