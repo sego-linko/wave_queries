@@ -25,4 +25,11 @@ CASE WHEN SUM(amount)>0 THEN 'net depositors'
      END
 FROM agent_transactions
 WHERE when_created > (CURRENT_TIMESTAMP  -  INTERVAL  '7 days') ;
- 
+
+--Query 6
+SELECT SUM(agent_transactions.amount) AS "atx volume city summary" , agents.city
+FROM agent_transactions
+INNER JOIN agents
+ON agent_transactions.agent_id = agents.agent_id
+WHERE agent_transactions.when_created > (CURRENT_TIMESTAMP  -  INTERVAL  '7 days')
+GROUP BY agents.city;
