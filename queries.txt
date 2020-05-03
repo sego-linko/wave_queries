@@ -1,8 +1,13 @@
 -- Query 1
-SELECT COUNT(u_id)
+SELECT COUNT(u_id) AS 'number of users'
 FROM users;
 
 -- Query 2
-SELECT COUNT(u_id)
+SELECT COUNT(u_id) AS ' number of transfers sent in CFA'
+FROM transfers
+WHERE send_amount_currency = 'CFA';
+
+-- Query 3
+SELECT COUNT(DISTINCT u_id) AS 'number of CFA users'
 FROM transfers
 WHERE send_amount_currency = 'CFA';
