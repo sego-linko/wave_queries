@@ -11,3 +11,9 @@ WHERE send_amount_currency = 'CFA';
 SELECT COUNT(DISTINCT u_id) AS 'number of CFA users'
 FROM transfers
 WHERE send_amount_currency = 'CFA';
+
+--Query 4
+SELECT COUNT(atx_id), when_created
+FROM agent_transactions
+WHERE when_created LIKE '2018%'
+GROUP BY DATE_TRUNC('month', when_created);
