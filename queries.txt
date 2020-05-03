@@ -51,5 +51,11 @@ WHERE transfers.when_created > CURRENT_DATE - interval '7 days'
 GROUP BY wallets.ledger_location, transfers.kind;
 
 --Query 9
-
+Wrong(could not do nested select, need more research)
+SELECT DISTINCT(wallets.wallet_id) AS "unique seller", SUM(transfers.send_amount_scalar) AS volume,  COUNT(transfers.transfer_id), wallets.ledger_location AS country, transfers.kind
+ FROM transfers
+ INNER JOIN wallets
+ON transfers.source_wallet_id = wallets.wallet_id
+WHERE transfers.when_created > CURRENT_DATE - interval '7 days'
+GROUP BY wallets.ledger_location, transfers.kind;
 --Query 10
